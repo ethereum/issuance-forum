@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ScrollProgress from '../components/ScrollProgress.astro';
+import GrainOverlay from '../components/GrainOverlay.astro';
+import ParallaxCircles from '../components/ParallaxCircles.astro';
+import Navigation from '../components/Navigation.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import HeroSection from '../components/HeroSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import AgendaSection from '../components/AgendaSection.astro';
+import ResourcesSection from '../components/ResourcesSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import CtaSection from '../components/CtaSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <ScrollProgress />
+  <GrainOverlay />
+  <ParallaxCircles />
+  <Navigation />
+  <ThemeToggle />
+
+  <div class="content-wrapper" style="
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  ">
+    <HeroSection />
+    <AboutSection />
+    <AgendaSection />
+    <ResourcesSection />
+    <FaqSection />
+    <CtaSection />
+    <Footer />
+  </div>
+</Layout>

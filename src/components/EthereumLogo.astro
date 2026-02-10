@@ -1,0 +1,31 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<svg class:list={['hero-logo', className]} viewBox="0 0 296 506" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 48px; width: auto;">
+  <path d="M147.988 383.109V505.5L0 288.497L147.988 383.109Z" fill="currentColor" />
+  <path d="M295.994 288.497L147.996 505.5V383.109L295.994 288.497Z" fill="currentColor" />
+  <path d="M295.994 257.927L147.996 173.506V352.549L295.994 257.927Z" fill="currentColor" />
+  <path d="M295.994 257.913L147.996 0V173.493L295.994 257.913Z" fill="currentColor" />
+  <path d="M147.988 0V173.493L0 257.913L147.988 0Z" fill="currentColor" />
+  <path d="M147.988 173.506V352.549L0 257.927L147.988 173.506Z" fill="currentColor" />
+</svg>
+
+<style>
+  .hero-logo {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+  }
+  .hero-logo:hover path:nth-child(1) { fill: #1e40af; }
+  .hero-logo:hover path:nth-child(2) { fill: #2563eb; }
+  .hero-logo:hover path:nth-child(3) { fill: #3b82f6; }
+  .hero-logo:hover path:nth-child(4) { fill: #60a5fa; }
+  .hero-logo:hover path:nth-child(5) { fill: #93c5fd; }
+  .hero-logo:hover path:nth-child(6) { fill: #bfdbfe; }
+
+  :global(.dark) .hero-logo:hover path:nth-child(1) { fill: #1e3a5f; }
+</style>

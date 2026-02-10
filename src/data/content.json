@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "title": "The Ethereum Issuance Forum | EthCC 2026",
+    "description": "A curated forum to discuss the responsible evolution of Ethereum issuance. Hosted at EthCC 2026 in Cannes, France.",
+    "ogImage": "/og-image.png"
+  },
+  "event": {
+    "name": "The Ethereum Issuance Forum",
+    "badge": "EthCC 2026 · Cannes, France",
+    "date": "July 2026",
+    "location": "Cannes, France",
+    "capacity": "85 Attendees",
+    "coordinates": "43.5528° N, 7.0174° E",
+    "organizer": "Organized by the Ethereum Foundation — RIG & Protocol Support"
+  },
+  "hero": {
+    "titleLines": ["The Ethereum", "Issuance", "Forum"],
+    "emphasisIndex": 1,
+    "text": "A curated forum to discuss the responsible evolution of Ethereum issuance.",
+    "ctas": {
+      "primary": { "label": "Reserve a Seat", "href": "#reserve" },
+      "secondary": { "label": "Learn more", "href": "#about" }
+    }
+  },
+  "about": {
+    "label": "About the Event",
+    "heading": "Building shared context around <em>issuance policy</em>",
+    "paragraphs": [
+      "The Ethereum Issuance Forum is a <span class=\"highlight-line\">targeted event to increase transparency</span> and build shared context surrounding research into Ethereum's issuance policy.",
+      "Hosted by the <strong>Ethereum Foundation Robust Incentives Group & Protocol Support team</strong>, the goal is to surface community considerations, trade-offs, and open questions to inform the research process.",
+      "This is not a decision-making body, but a space for <span class=\"highlight-line\">exploration and understanding</span>—bringing together researchers, validators, and community members for structured dialogue."
+    ],
+    "nextSection": { "label": "View Agenda", "href": "#schedule" }
+  },
+  "agenda": {
+    "label": "Agenda",
+    "heading": "Three hours of<br>focused dialogue",
+    "intro": "The event spans approximately three hours, with breaks for informal conversation and connection.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Level-setting Presentations",
+        "description": "Researchers present current context and modeling. These talks will be recorded and published to ensure transparency for the wider community."
+      },
+      {
+        "number": "02",
+        "title": "Moderated Forum",
+        "description": "A discussion where all participants have the opportunity to speak and discuss issuance policy considerations. To encourage open dialogue, this portion will not be recorded."
+      },
+      {
+        "number": "03",
+        "title": "Networking",
+        "description": "Informal time to connect with peers and researchers. Continue conversations and build lasting relationships within the community."
+      }
+    ],
+    "note": "A detailed schedule will be released closer to the event date.",
+    "nextSection": { "label": "Explore Resources", "href": "#resources" }
+  },
+  "resources": {
+    "label": "Resources",
+    "heading": "Learn about<br>issuance policy",
+    "items": [
+      { "num": "i.", "title": "Understanding Ethereum Issuance", "href": "#" },
+      { "num": "ii.", "title": "Research Overview & Context", "href": "#" }
+    ],
+    "deepLink": {
+      "label": "View the full resource collection at issuance.wtf",
+      "href": "https://issuance.wtf"
+    },
+    "nextSection": { "label": "Read FAQ", "href": "#faq" }
+  },
+  "faq": {
+    "label": "FAQ",
+    "heading": "Common questions",
+    "items": [
+      {
+        "question": "Do I need an EthCC ticket to attend?",
+        "answer": "Yes. As the forum is hosted within the EthCC venue, a valid conference ticket is required for entry."
+      },
+      {
+        "question": "What is the goal of this forum?",
+        "answer": "The primary goal is to build context and reduce uncertainty. We are here to explore and inform, not to vote or finalize a specific policy. The output will be summaries of themes and considerations that help inform the broader research process."
+      },
+      {
+        "question": "How does registration work?",
+        "answer": "This is an event with limited capacity—approximately 85 attendees—to ensure productive discussion. Because space is limited, not all who apply will be able to attend."
+      },
+      {
+        "question": "Will the session be recorded?",
+        "answer": "Yes and no. The introductory presentations will be recorded and shared publicly. The forum discussion itself will not be recorded to allow participants to speak freely."
+      }
+    ],
+    "nextSection": { "label": "Reserve a Seat", "href": "#reserve" }
+  },
+  "cta": {
+    "heading": "Be Part of<br>the <em>Conversation</em>",
+    "text": "Limited seats available. Join researchers and community leaders shaping Ethereum's future.",
+    "button": { "label": "Reserve a Seat", "href": "#" }
+  },
+  "footer": {
+    "copyright": "© 2026",
+    "backToTop": "Back to Top"
+  },
+  "nav": {
+    "links": [
+      { "label": "Home", "href": "#hero", "section": "hero" },
+      { "label": "About", "href": "#about", "section": "about" },
+      { "label": "Agenda", "href": "#schedule", "section": "schedule" },
+      { "label": "Resources", "href": "#resources", "section": "resources" },
+      { "label": "FAQ", "href": "#faq", "section": "faq" }
+    ]
+  }
+}

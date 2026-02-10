@@ -1,0 +1,136 @@
+<div id="circles-container"></div>
+
+<script>
+  const lightColors = ['#2563eb', '#0f172a'];
+  const darkColors = ['#3b82f6', '#1e3a5f'];
+
+  function getColors(): string[] {
+    return document.documentElement.classList.contains('dark') ? darkColors : lightColors;
+  }
+
+  function getContainer(): HTMLElement {
+    return document.getElementById('circles-container')!;
+  }
+
+  function generateCircles() {
+    const container = getContainer();
+    container.innerHTML = '';
+    const colors = getColors();
+    const numCircles = 12 + Math.floor(Math.random() * 6);
+    const pageHeight = Math.max(document.body.scrollHeight, 4000);
+
+    // 2 massive circles
+    for (let i = 0; i < 2; i++) {
+      const circle = document.createElement('div');
+      circle.className = 'parallax-circle';
+
+      const size = 1500 + Math.random() * 1500;
+      const borderWidth = 4 + Math.random() * 8;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const opacity = 0.08 + Math.random() * 0.12;
+
+      const positions = [
+        { top: -size * 0.7, left: -size * 0.5 },
+        { top: -size * 0.6, left: window.innerWidth - size * 0.3 },
+        { top: pageHeight * 0.3, left: -size * 0.8 },
+        { top: pageHeight * 0.5, left: window.innerWidth - size * 0.2 }
+      ];
+      const pos = positions[Math.floor(Math.random() * positions.length)];
+      const speed = 0.005 + Math.random() * 0.015;
+
+      circle.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        border: ${borderWidth}px solid ${color};
+        opacity: ${opacity};
+        top: ${pos.top}px;
+        left: ${pos.left}px;
+      `;
+      circle.dataset.speed = speed.toFixed(3);
+      container.appendChild(circle);
+    }
+
+    // Regular circles
+    for (let i = 0; i < numCircles; i++) {
+      addRandomCircle();
+    }
+  }
+
+  function addRandomCircle() {
+    const container = getContainer();
+    const colors = getColors();
+    const circle = document.createElement('div');
+    circle.className = 'parallax-circle';
+
+    const pageHeight = Math.max(document.body.scrollHeight, 4000);
+    const size = 100 + Math.random() * 600;
+    const borderWidth = 3 + Math.random() * 37;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const opacity = 0.08 + Math.random() * 0.27;
+    const top = -200 + Math.random() * (pageHeight + 400);
+    const left = -300 + Math.random() * (window.innerWidth + 200);
+    const speed = 0.01 + Math.random() * 0.11;
+
+    circle.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      border: ${borderWidth}px solid ${color};
+      opacity: ${opacity};
+      top: ${top}px;
+      left: ${left}px;
+    `;
+    circle.dataset.speed = speed.toFixed(3);
+    container.appendChild(circle);
+  }
+
+  function removeRandomCircle() {
+    const circles = document.querySelectorAll('.parallax-circle');
+    if (circles.length > 0) {
+      circles[Math.floor(Math.random() * circles.length)].remove();
+    }
+  }
+
+  function removeAllCircles() {
+    document.querySelectorAll('.parallax-circle').forEach(c => c.remove());
+  }
+
+  function resetCircles() {
+    generateCircles();
+  }
+
+  // Parallax scroll
+  let scrollY = 0;
+  let ticking = false;
+
+  function updateParallax() {
+    document.querySelectorAll('.parallax-circle').forEach(circle => {
+      const speed = parseFloat((circle as HTMLElement).dataset.speed || '0');
+      (circle as HTMLElement).style.transform = `translateY(${scrollY * speed}px)`;
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    scrollY = window.scrollY;
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  });
+
+  // Keyboard controls
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '+' || e.key === '=') addRandomCircle();
+    else if (e.key === '-' || e.key === '_') removeRandomCircle();
+    else if (e.key === '0') removeAllCircles();
+    else if (e.key === 'r' || e.key === 'R') resetCircles();
+  });
+
+  // Theme change: regenerate with new colors
+  window.addEventListener('themechange', () => {
+    generateCircles();
+  });
+
+  // Initial
+  generateCircles();
+</script>

@@ -1,0 +1,134 @@
+---
+import content from '../data/content.json';
+const { agenda } = content;
+---
+
+<section class="schedule" id="schedule" style="
+  padding: 10rem 0;
+  position: relative;
+  color: var(--color-text);
+  overflow: hidden;
+">
+  <div class="glass-card" style="max-width: 100%; margin: 0; position: relative; z-index: 1;">
+    <span class="section-label">{agenda.label}</span>
+    <h2 set:html={agenda.heading} style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 1rem;" />
+    <p style="
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      max-width: 500px;
+      margin-bottom: 6rem;
+      opacity: 0.7;
+      color: var(--color-text);
+    ">{agenda.intro}</p>
+
+    <div class="agenda-flow" style="display: flex; flex-direction: column; gap: 6rem;">
+      {agenda.items.map((item) => (
+        <div class="agenda-item io-animate" style="
+          display: grid;
+          grid-template-columns: 120px 1fr;
+          gap: 4rem;
+          align-items: start;
+        ">
+          <span style="
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            font-weight: 400;
+            color: var(--color-primary);
+            line-height: 1;
+            opacity: 0.4;
+          ">{item.number}</span>
+          <div>
+            <h3 style="
+              font-family: var(--font-serif);
+              font-size: 1.8rem;
+              font-weight: 400;
+              margin-bottom: 1rem;
+              color: var(--color-text);
+            ">{item.title}</h3>
+            <p style="
+              font-size: 1.1rem;
+              line-height: 1.9;
+              opacity: 0.7;
+              max-width: 450px;
+              color: var(--color-text);
+            ">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p style="
+      margin-top: 5rem;
+      font-size: 0.95rem;
+      opacity: 0.5;
+      font-style: italic;
+      color: var(--color-text);
+    ">{agenda.note}</p>
+
+    <a href={agenda.nextSection.href} class="section-nav" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+      transition: color 0.3s;
+    ">
+      {agenda.nextSection.label}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .section-nav:hover {
+    color: var(--color-primary) !important;
+  }
+
+  @media (max-width: 1024px) {
+    .agenda-item {
+      grid-template-columns: 80px 1fr !important;
+      gap: 2rem !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .schedule {
+      padding: 6rem 0 !important;
+    }
+
+    .agenda-item {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+    }
+
+    .agenda-item span:first-child {
+      font-size: 3rem !important;
+    }
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.agenda-item.io-animate').forEach((item, index) => {
+    (item as HTMLElement).style.transitionDelay = `${index * 0.15}s`;
+    observer.observe(item);
+  });
+</script>

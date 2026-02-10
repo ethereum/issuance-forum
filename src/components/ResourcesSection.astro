@@ -1,0 +1,108 @@
+---
+import content from '../data/content.json';
+const { resources } = content;
+---
+
+<section class="resources" id="resources" style="
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 10rem 0;
+  position: relative;
+">
+  <div class="glass-card" style="max-width: 100%; margin: 0;">
+    <span class="section-label">{resources.label}</span>
+    <h2 set:html={resources.heading} />
+
+    <div class="resource-flow" style="margin-top: 4rem;">
+      {resources.items.map((item) => (
+        <a href={item.href} class="resource-item" style="
+          display: flex;
+          align-items: baseline;
+          gap: 2rem;
+          padding: 2rem 0;
+          border-bottom: 1px solid var(--color-border);
+          text-decoration: none;
+          color: var(--color-text);
+          transition: all 0.4s;
+        ">
+          <span style="
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--color-primary);
+            font-style: italic;
+          ">{item.num}</span>
+          <span class="resource-title" style="
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+          ">{item.title}</span>
+          <span class="resource-arrow" style="
+            margin-left: auto;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s;
+          ">→</span>
+        </a>
+      ))}
+    </div>
+
+    <a href={resources.deepLink.href} class="deep-link" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 3rem;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    ">
+      {resources.deepLink.label}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+      </svg>
+    </a>
+
+    <br />
+
+    <a href={resources.nextSection.href} class="section-nav" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+      transition: color 0.3s;
+    ">
+      {resources.nextSection.label}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .resource-item:hover {
+    padding-left: 2rem !important;
+  }
+
+  .resource-item:hover .resource-title {
+    color: var(--color-primary) !important;
+  }
+
+  .resource-item:hover .resource-arrow {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+
+  .deep-link:hover,
+  .section-nav:hover {
+    color: var(--color-primary) !important;
+  }
+</style>

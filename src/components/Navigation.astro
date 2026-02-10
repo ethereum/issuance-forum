@@ -1,0 +1,109 @@
+---
+import content from '../data/content.json';
+const { links } = content.nav;
+---
+
+<nav id="mainNav" style="
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+">
+  <div class="nav-links" style="
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  ">
+    {links.map((link) => (
+      <a href={link.href} data-section={link.section} style="
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s;
+        position: relative;
+        opacity: 0.5;
+      ">{link.label}</a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  @media (max-width: 768px) {
+    nav {
+      display: none !important;
+    }
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    right: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-links a:hover {
+    color: var(--color-primary) !important;
+    opacity: 1 !important;
+  }
+
+  .nav-links a:hover::after {
+    transform: translateY(-50%) scale(0.7);
+  }
+
+  .nav-links a.active {
+    color: var(--color-primary) !important;
+    opacity: 1 !important;
+    font-weight: 600;
+  }
+
+  .nav-links a.active::after {
+    transform: translateY(-50%) scale(1);
+  }
+</style>
+
+<script>
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+
+  function updateActiveNav() {
+    const scrollPos = window.scrollY + window.innerHeight / 3;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('data-section') === sectionId) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+
+    if (window.scrollY < 100) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const homeLink = document.querySelector('.nav-links a[data-section="hero"]');
+      if (homeLink) homeLink.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
+</script>

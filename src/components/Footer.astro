@@ -1,0 +1,59 @@
+---
+import content from '../data/content.json';
+const { footer } = content;
+---
+
+<footer style="
+  color: var(--color-text);
+  padding: 5rem 0;
+  position: relative;
+  z-index: 1;
+">
+  <div style="
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  " class="footer-content">
+    <a href="#" class="back-to-top" id="backToTop" style="
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    ">
+      {footer.backToTop}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </a>
+    <div style="font-size: 0.85rem; opacity: 0.5;">
+      <p>{footer.copyright}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .back-to-top:hover {
+    color: var(--color-primary) !important;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column !important;
+      gap: 2rem !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+<script>
+  document.getElementById('backToTop')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

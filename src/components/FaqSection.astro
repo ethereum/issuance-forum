@@ -1,0 +1,88 @@
+---
+import content from '../data/content.json';
+const { faq } = content;
+---
+
+<section class="faq" id="faq" style="
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 10rem 0;
+  position: relative;
+">
+  <div class="glass-card" style="max-width: 100%; margin: 0;">
+    <span class="section-label">{faq.label}</span>
+    <h2 style="font-size: clamp(3rem, 6vw, 5rem);">{faq.heading}</h2>
+
+    <div class="faq-flow" style="margin-top: 4rem;">
+      {faq.items.map((item) => (
+        <div class="faq-item io-animate-sm" style="
+          padding: 3rem 0;
+          border-bottom: 1px solid var(--color-border);
+        ">
+          <h3 style="
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+          ">{item.question}</h3>
+          <p style="
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--color-text);
+            opacity: 0.8;
+            max-width: 550px;
+          ">{item.answer}</p>
+        </div>
+      ))}
+    </div>
+
+    <a href={faq.nextSection.href} class="section-nav" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+      transition: color 0.3s;
+    ">
+      {faq.nextSection.label}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .section-nav:hover {
+    color: var(--color-primary) !important;
+  }
+
+  @media (max-width: 768px) {
+    .faq {
+      padding: 6rem 0 !important;
+    }
+  }
+</style>
+
+<script>
+  const faqObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  });
+
+  document.querySelectorAll('.faq-item.io-animate-sm').forEach((item, index) => {
+    (item as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
+    faqObserver.observe(item);
+  });
+</script>

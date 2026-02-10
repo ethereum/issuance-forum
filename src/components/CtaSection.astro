@@ -1,0 +1,27 @@
+---
+import content from '../data/content.json';
+const { cta } = content;
+---
+
+<section class="cta-section" id="reserve" style="padding: 12rem 0; position: relative;">
+  <div class="glass-card">
+    <h2 set:html={cta.heading} style="
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      margin-bottom: 1rem;
+      color: var(--color-text);
+    " />
+    <p style="
+      font-size: 1.3rem;
+      color: var(--color-text);
+      opacity: 0.7;
+      margin-bottom: 3rem;
+      max-width: 500px;
+    ">{cta.text}</p>
+    <a href={cta.button.href} class="cta-primary">
+      <span>{cta.button.label}</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</section>

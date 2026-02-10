@@ -1,0 +1,58 @@
+---
+import content from '../data/content.json';
+const { about } = content;
+---
+
+<section class="about" id="about" style="
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 10rem 0;
+  position: relative;
+">
+  <div class="glass-card" style="max-width: 100%; margin: 0;">
+    <span class="section-label">{about.label}</span>
+    <div class="about-text" style="
+      font-size: 1.4rem;
+      line-height: 2.2;
+      color: var(--color-text);
+    ">
+      {about.paragraphs.map((p) => (
+        <p style="margin-bottom: 2rem;" set:html={p} />
+      ))}
+    </div>
+    <a href={about.nextSection.href} class="section-nav" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+      transition: color 0.3s;
+    ">
+      {about.nextSection.label}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .about-text :global(strong) {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .section-nav:hover {
+    color: var(--color-primary) !important;
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: 6rem 0 !important;
+    }
+  }
+</style>

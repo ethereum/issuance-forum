@@ -1,0 +1,10 @@
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<script>
+  const bar = document.getElementById('scrollProgress')!;
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (scrollTop / docHeight) * 100 + '%';
+  });
+</script>

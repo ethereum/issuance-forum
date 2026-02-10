@@ -1,0 +1,56 @@
+<button
+  id="themeToggle"
+  aria-label="Toggle dark mode"
+  style="
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+    background: var(--color-card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--color-text);
+  "
+>
+  <!-- Sun icon (shown in dark mode) -->
+  <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+    <circle cx="12" cy="12" r="5"/>
+    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+  </svg>
+  <!-- Moon icon (shown in light mode) -->
+  <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<script>
+  const toggle = document.getElementById('themeToggle')!;
+  const sun = toggle.querySelector('.icon-sun') as HTMLElement;
+  const moon = toggle.querySelector('.icon-moon') as HTMLElement;
+
+  function updateIcons() {
+    const isDark = document.documentElement.classList.contains('dark');
+    sun.style.display = isDark ? 'block' : 'none';
+    moon.style.display = isDark ? 'none' : 'block';
+  }
+
+  updateIcons();
+
+  toggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcons();
+
+    // Dispatch event so parallax circles can update colors
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { dark: isDark } }));
+  });
+</script>
