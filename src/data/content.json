@@ -2,7 +2,8 @@
   "meta": {
     "title": "The Ethereum Issuance Forum | EthCC 2026",
     "description": "A curated forum to discuss the responsible evolution of Ethereum issuance. Hosted at EthCC 2026 in Cannes, France.",
-    "ogImage": "/favicon.svg"
+    "siteUrl": "https://issuance-forum.ethereum.org",
+    "ogImage": "/og-image.png"
   },
   "event": {
     "name": "The Ethereum Issuance Forum",
