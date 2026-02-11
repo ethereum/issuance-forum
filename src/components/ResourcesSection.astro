@@ -14,7 +14,16 @@ const { resources } = content;
     <span class="section-label">{resources.label}</span>
     <h2 set:html={resources.heading} />
 
-    <div class="resource-flow" style="margin-top: 4rem;">
+    <p style="
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--color-text);
+      opacity: 0.85;
+      margin-top: 2rem;
+      max-width: 600px;
+    ">{resources.intro}</p>
+
+    <div class="resource-flow" style="margin-top: 2rem;">
       {resources.items.map((item) => (
         <a href={item.href} class="resource-item" style="
           display: flex;
