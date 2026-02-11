@@ -14,7 +14,16 @@ const { resources } = content;
     <span class="section-label">{resources.label}</span>
     <h2 set:html={resources.heading} />
 
-    <div class="resource-flow" style="margin-top: 4rem;">
+    <p style="
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--color-text);
+      opacity: 0.85;
+      margin-top: 2rem;
+      max-width: 600px;
+    ">{resources.intro}</p>
+
+    <div class="resource-flow" style="margin-top: 2rem;">
       {resources.items.map((item) => (
         <a href={item.href} class="resource-item" style="
           display: flex;
@@ -61,7 +70,7 @@ const { resources } = content;
       transition: color 0.3s;
     ">
       {resources.deepLink.label}
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M7 17L17 7M17 7H7M17 7V17"/>
       </svg>
     </a>
@@ -80,7 +89,7 @@ const { resources } = content;
       transition: color 0.3s;
     ">
       {resources.nextSection.label}
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M6 9l6 6 6-6"/>
       </svg>
     </a>

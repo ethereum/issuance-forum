@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_astro/
+
+Sitemap: https://issuance-forum.ethereum.org/sitemap-index.xml
