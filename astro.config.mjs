@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://issuance-forum.ethereum.org',
+  site: 'https://issuance.forum',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
