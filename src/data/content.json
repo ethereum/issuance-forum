@@ -18,7 +18,7 @@
     "emphasisIndex": 1,
     "text": "A curated forum to discuss the responsible evolution of Ethereum issuance.",
     "ctas": {
-      "primary": { "label": "Reserve a Seat", "href": "#reserve" },
+      "primary": { "label": "Reserve a Seat", "href": "https://lu.ma/cvz7yv07" },
       "secondary": { "label": "Learn more", "href": "#about" }
     }
   },
@@ -90,12 +90,12 @@
         "answer": "Yes and no. The introductory presentations will be recorded and shared publicly. The forum discussion itself will not be recorded to allow participants to speak freely."
       }
     ],
-    "nextSection": { "label": "Reserve a Seat", "href": "#reserve" }
+    "nextSection": { "label": "Reserve a Seat", "href": "https://lu.ma/cvz7yv07" }
   },
   "cta": {
     "heading": "Be Part of<br>the <em>Conversation</em>",
     "text": "Limited seats available. Join researchers and community leaders shaping Ethereum's future.",
-    "button": { "label": "Reserve a Seat", "href": "#" }
+    "button": { "label": "Reserve a Seat", "href": "https://lu.ma/cvz7yv07" }
   },
   "footer": {
     "copyright": "© 2026",
